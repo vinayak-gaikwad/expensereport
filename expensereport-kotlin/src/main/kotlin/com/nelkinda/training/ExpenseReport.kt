@@ -11,12 +11,12 @@ class Expense {
     var amount: Int = 0
 }
 
-class ExpenseReport {
+class ExpenseReport(val currentDateProvider: () -> Date = { Date() }) {
     fun printReport(expenses: List<Expense>) {
         var total = 0
         var mealExpenses = 0
 
-        println("Expenses ${getCurrentDate()}")
+        println("Expenses ${currentDateProvider()}")
 
         for (expense in expenses) {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
@@ -39,9 +39,5 @@ class ExpenseReport {
 
         println("Meal expenses: $mealExpenses")
         println("Total expenses: $total")
-    }
-
-    protected fun getCurrentDate(): Date {
-        return Date()
     }
 }

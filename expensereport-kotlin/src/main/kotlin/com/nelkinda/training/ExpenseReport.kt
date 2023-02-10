@@ -16,7 +16,7 @@ class ExpenseReport {
         var total = 0
         var mealExpenses = 0
 
-        println("Expenses ${Date()}")
+        println("Expenses ${getCurrentDate()}")
 
         for (expense in expenses) {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
@@ -39,5 +39,9 @@ class ExpenseReport {
 
         println("Meal expenses: $mealExpenses")
         println("Total expenses: $total")
+    }
+
+    protected fun getCurrentDate(): Date {
+        return Date()
     }
 }
